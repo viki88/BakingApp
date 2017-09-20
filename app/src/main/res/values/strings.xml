@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Baking Time</string>
+
+    <!-- title action bar-->
+    <string name="text_progress_bar">Loading...</string>
+
+    <string name="text_recipe_ingredient">Recipe Ingredients</string>
+    <string name="text_naviation_step">Navigation to next or previous step?</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+</resources>

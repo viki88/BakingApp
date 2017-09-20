@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_standard">
+        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+            android:id="@+id/exo_player_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_video_player"/>
+        <TextView
+            android:id="@+id/step_detail"
+            tools:text="1. Preheat the oven to 350°F. Butter a 9 deep dish pie pan."
+            android:padding="@dimen/margin_list_row"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:background="@drawable/bg_list_w_border"
+            android:padding="@dimen/margin_list_row"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_naviation_step"/>
+    </LinearLayout>
+
+</ScrollView>

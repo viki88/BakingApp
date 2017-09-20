@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="@dimen/widget_margin"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/title_recipe_widget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Brownies"
+        android:textSize="@dimen/title_size_widget"
+        android:padding="@dimen/margin_standard"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"/>
+
+    <ImageView
+        android:id="@+id/btn_left_widget"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_standard"
+        android:src="@drawable/ic_chevron_left_white_24dp"/>
+
+    <ImageView
+        android:id="@+id/btn_right_widget"
+        android:layout_alignParentRight="true"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_standard"
+        android:src="@drawable/ic_chevron_right_white_24dp"/>
+
+    <TextView
+        android:id="@+id/ingredient_recipe_widget"
+        android:layout_below="@id/title_recipe_widget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Brownies"
+        android:textSize="@dimen/content_size_widget"
+        android:padding="@dimen/margin_standard"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_above="@id/btn_right_widget"/>
+
+
+</RelativeLayout>
