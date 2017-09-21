@@ -4,6 +4,7 @@
     <dimen name="padding_card_recipe">32dp</dimen>
     <dimen name="margin_list_row">8dp</dimen>
     <dimen name="height_video_player">250dp</dimen>
+    <dimen name="height_thumbnail_url">100dp</dimen>
 
     <!--
 Refer to App Widget Documentation for margin information

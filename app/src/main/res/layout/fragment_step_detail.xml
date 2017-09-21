@@ -14,6 +14,13 @@
             android:id="@+id/exo_player_view"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_video_player"/>
+
+        <ImageView
+            android:id="@+id/thumbnail_image_view"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_thumbnail_url" />
+
         <TextView
             android:id="@+id/step_detail"
             tools:text="1. Preheat the oven to 350°F. Butter a 9 deep dish pie pan."

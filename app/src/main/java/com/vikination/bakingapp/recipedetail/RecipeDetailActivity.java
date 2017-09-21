@@ -2,6 +2,7 @@ package com.vikination.bakingapp.recipedetail;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.view.MenuItem;
 
 import com.google.gson.Gson;
 import com.vikination.bakingapp.R;
@@ -37,7 +38,7 @@ public class RecipeDetailActivity extends BaseActivity{
     public void loadView() {
         ingredientsResponse = (IngredientsResponse) getIntent().getSerializableExtra(ING_KEY);
         setToolbarTitle(ingredientsResponse.getName());
-        setHomeButtonVisible(R.drawable.ic_menu_white_24dp, true);
+        setHomeButtonVisible(true);
         replaceFragmentWithRecipeDetailList();
         Timber.i("ingredient response : %s",new Gson().toJson(ingredientsResponse));
     }
@@ -65,6 +66,7 @@ public class RecipeDetailActivity extends BaseActivity{
     void showStepDetail(int indexStep){
         Intent intent = new Intent(this, StepDetailActivity.class);
         intent.putExtra(StepDetailActivity.STEP_KEY, ingredientsResponse.getSteps().get(indexStep));
+        intent.putExtra(StepDetailActivity.RECIPE_NAME, ingredientsResponse.getName());
         intent.putExtra(StepDetailActivity.RESTART_PLAYER, true);
         startActivity(intent);
     }
@@ -73,5 +75,17 @@ public class RecipeDetailActivity extends BaseActivity{
         Intent starter = new Intent(baseActivity, RecipeDetailActivity.class);
         starter.putExtra(RecipeDetailActivity.ING_KEY, ingredientsResponse);
         baseActivity.startActivity(starter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

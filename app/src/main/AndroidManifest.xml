@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".recipedetail.RecipeDetailActivity" />
         <activity android:name=".ingredientsList.IngredientListActivity" />
-        <activity android:name=".stepdetail.StepDetailActivity" />
+        <activity android:name=".stepdetail.StepDetailActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
         <receiver android:name=".BakingAppWidget">
             <intent-filter>

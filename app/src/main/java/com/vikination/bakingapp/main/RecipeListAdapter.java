@@ -5,8 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.vikination.bakingapp.R;
 import com.vikination.bakingapp.model.IngredientsResponse;
 
@@ -43,6 +45,9 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     @Override
     public void onBindViewHolder(RecipeListHolder holder, int position) {
         final IngredientsResponse ingredientsResponse = ingredientsResponses.get(position);
+        if (!ingredientsResponse.getImage().isEmpty()){
+            Picasso.with(context).load(ingredientsResponse.getImage()).into(holder.prevImageView);
+        }
 
         holder.ingredientNameText.setText(ingredientsResponse.getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -58,9 +63,10 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
         return ingredientsResponses.size();
     }
 
-    class RecipeListHolder extends RecyclerView.ViewHolder{
+    public static class RecipeListHolder extends RecyclerView.ViewHolder{
 
         @BindView(R.id.ingredient_name_text) TextView ingredientNameText;
+        @BindView(R.id.bg_cake_image) ImageView prevImageView;
 
         public RecipeListHolder(View itemView) {
             super(itemView);

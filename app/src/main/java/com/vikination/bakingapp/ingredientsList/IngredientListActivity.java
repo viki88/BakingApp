@@ -2,6 +2,7 @@ package com.vikination.bakingapp.ingredientsList;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.MenuItem;
 
 import com.vikination.bakingapp.R;
 import com.vikination.bakingapp.base.BaseActivity;
@@ -29,12 +30,24 @@ public class IngredientListActivity extends BaseActivity{
                 getIntent().getSerializableExtra(KEY_INGREDIENT_RESPONSE);
 
         setToolbarTitle(ingredientsResponse.getName());
-        setHomeButtonVisible(R.drawable.ic_menu_white_24dp, true);
+        setHomeButtonVisible(true);
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container_ingredient_list, IngredientsListFragment.getInstance()
                         .setIngredients(ingredientsResponse))
                 .commit();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

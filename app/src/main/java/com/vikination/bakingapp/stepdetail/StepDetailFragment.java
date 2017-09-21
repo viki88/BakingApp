@@ -3,6 +3,8 @@ package com.vikination.bakingapp.stepdetail;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -17,6 +19,7 @@ import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.squareup.picasso.Picasso;
 import com.vikination.bakingapp.R;
 import com.vikination.bakingapp.base.FragmentBase;
 import com.vikination.bakingapp.model.IngredientsResponse;
@@ -41,6 +44,7 @@ public class StepDetailFragment extends FragmentBase{
 
     @BindView(R.id.step_detail) TextView textStepDetail;
     @BindView(R.id.exo_player_view) SimpleExoPlayerView mPlayerView;
+    @BindView(R.id.thumbnail_image_view) ImageView thumbnailView;
 
     @Override
     protected int getLayoutView() {
@@ -52,6 +56,13 @@ public class StepDetailFragment extends FragmentBase{
         if (step != null){
             if (textStepDetail != null)textStepDetail.setText(step.getDescription());
             mediaUri = Uri.parse(step.getVideoURL());
+
+            if (!step.getThumbnailURL().isEmpty()){
+                thumbnailView.setVisibility(View.VISIBLE);
+                Picasso.with(getActivity()).load(step.getThumbnailURL()).into(thumbnailView);
+            }else {
+                thumbnailView.setVisibility(View.GONE);
+            }
 
             initializePlayer();
         }
@@ -111,11 +122,17 @@ public class StepDetailFragment extends FragmentBase{
         }
     }
 
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        releasePlayer();
-//    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        releasePlayer();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        releasePlayer();
+    }
 
     @Override
     public void onDestroy() {

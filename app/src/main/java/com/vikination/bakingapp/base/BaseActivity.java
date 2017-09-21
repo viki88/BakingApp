@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -38,6 +39,10 @@ public abstract class BaseActivity extends AppCompatActivity{
 
     protected void showToast(String message){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    protected void setToolbar(Toolbar toolbar){
+        setSupportActionBar(toolbar);
     }
 
     protected void setToolbarTitle(int title){
