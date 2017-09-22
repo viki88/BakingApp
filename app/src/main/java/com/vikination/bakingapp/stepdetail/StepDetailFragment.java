@@ -3,6 +3,7 @@ package com.vikination.bakingapp.stepdetail;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -57,7 +58,7 @@ public class StepDetailFragment extends FragmentBase{
             if (textStepDetail != null)textStepDetail.setText(step.getDescription());
             mediaUri = Uri.parse(step.getVideoURL());
 
-            if (!step.getThumbnailURL().isEmpty()){
+            if (!TextUtils.isEmpty(step.getThumbnailURL())){
                 thumbnailView.setVisibility(View.VISIBLE);
                 Picasso.with(getActivity()).load(step.getThumbnailURL()).into(thumbnailView);
             }else {
@@ -107,9 +108,11 @@ public class StepDetailFragment extends FragmentBase{
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        currentState = mExoPlayer.getCurrentPosition();
-        Timber.i("current state : %s",String.valueOf(currentState));
-        outState.putLong(PLAYBACK_STATE, currentState);
+        if (mExoPlayer != null){
+            currentState = mExoPlayer.getCurrentPosition();
+            Timber.i("current state : %s",String.valueOf(currentState));
+            outState.putLong(PLAYBACK_STATE, currentState);
+        }
         super.onSaveInstanceState(outState);
     }
 
@@ -125,12 +128,6 @@ public class StepDetailFragment extends FragmentBase{
     @Override
     public void onStop() {
         super.onStop();
-        releasePlayer();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
         releasePlayer();
     }
 

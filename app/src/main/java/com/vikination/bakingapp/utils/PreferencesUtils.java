@@ -23,12 +23,13 @@ public class PreferencesUtils {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(INGREDIENTS_DATA, data);
-        editor.commit();
+        editor.apply();
     }
 
     public static ArrayList<IngredientsResponse> getIngredientsData(Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         String dataIngredients = preferences.getString(INGREDIENTS_DATA, "");
+//        return Json.deSerialize(dataIngredients, new TypeToken<ArrayList<IngredientsResponse>>(){}.getType());
         return new Gson().fromJson(dataIngredients, new TypeToken<ArrayList<IngredientsResponse>>(){}.getType());
     }
 
@@ -36,7 +37,7 @@ public class PreferencesUtils {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(MARKED_RECIPE, new Gson().toJson(ingredientsResponse));
-        editor.commit();
+        editor.apply();
     }
 
     public static IngredientsResponse getIngredientsResponseMarked(Context context){

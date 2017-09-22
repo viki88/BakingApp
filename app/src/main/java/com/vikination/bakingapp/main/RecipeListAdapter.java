@@ -2,6 +2,7 @@ package com.vikination.bakingapp.main;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Re
     @Override
     public void onBindViewHolder(RecipeListHolder holder, int position) {
         final IngredientsResponse ingredientsResponse = ingredientsResponses.get(position);
-        if (!ingredientsResponse.getImage().isEmpty()){
+        if (!TextUtils.isEmpty(ingredientsResponse.getImage())){
             Picasso.with(context).load(ingredientsResponse.getImage()).into(holder.prevImageView);
         }
 
