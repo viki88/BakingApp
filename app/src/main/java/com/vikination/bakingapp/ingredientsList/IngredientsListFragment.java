@@ -28,7 +28,6 @@ public class IngredientsListFragment extends FragmentBase{
     IngredientsListAdapter adapter;
 
     @BindView(R.id.rv_ingredient_list) RecyclerView rvList;
-    @BindView(R.id.swipe_view_ingredient_list) SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected int getLayoutView() {
